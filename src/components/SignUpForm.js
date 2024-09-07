@@ -1,0 +1,72 @@
+import { useState } from 'react';
+
+const SignUpForm = ({ onSubmit }) => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(formData);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="p-6 bg-gray-100 rounded-lg shadow-lg">
+      <div>
+        <label>First Name</label>
+        <input
+          type="text"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+          className="border p-2 w-full mb-4"
+          required
+        />
+      </div>
+      <div>
+        <label>Last Name</label>
+        <input
+          type="text"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+          className="border p-2 w-full mb-4"
+          required
+        />
+      </div>
+      <div>
+        <label>Email</label>
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="border p-2 w-full mb-4"
+          required
+        />
+      </div>
+      <div>
+        <label>Password</label>
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="border p-2 w-full mb-4"
+          required
+        />
+      </div>
+      <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded">Register</button>
+    </form>
+  );
+};
+
+export default SignUpForm;
