@@ -4,6 +4,7 @@ import axios from 'axios';
 const API_URL = 'http://3.122.115.219:9093';  // Базовый URL для API
  let ok="ok"
  let numbers=1234
+
 export const register = async (firstName, lastName, email, password) => {
     try {
       const response = await axios.post(`${API_URL}/student/register`, {
